@@ -4,3 +4,70 @@
 	-fx-shadow:  5px 5px 10px #001940,
              -5px -5px 10px #002e76;
 }
+
+.dasboard-button{
+	-fx-border-style: solid;
+	-fx-border-color: white;
+	-fx-border-width: 2px;
+	-fx-border-radius: 10px;
+	-fx-background-radius: 10px;
+	-fx-cursor: hand;
+	-fx-background-color:  #379237 ;
+	-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+
+}
+
+.dasboard-button:hover{
+	-fx-background-color: #019267;
+}
+
+.dasboard-button:pressed{
+	-fx-background-color: #357C3C;
+}
+
+.logoutBtn{
+	-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+}
+
+.button{
+	-fx-background-radius: 10px;
+	-fx-cursor: hand;
+	-fx-background-color:  #379237 ;
+	-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+
+}
+
+.button:hover{
+	-fx-background-color: #019267;
+}
+
+.button:pressed{
+	-fx-background-color: #357C3C;
+}
+
+.table-view{
+	-fx-background-color: transparent;
+	-fx-border-color: #379237;
+	-fx-border-radius: 0px 0px 8px 8px ;
+	-fx-border-width: 2px;
+	-fx-padding: 0px;
+}
+
+.table-view .table-colum{
+	-fx-aligment: CENTER;
+}
+
+.table-view .column-header-background{
+	-fx-background-color: #00235B;
+	-fx-background-radius: 8px;
+}
+
+.table-view .column-header .filter{
+	-fx-background-color: transparent;
+	-fx-size: 40px;
+}
+
+.table-view .column-header .label{
+	-fx-text-fill: #fff;
+	-fx-font-family: Arial;
+}

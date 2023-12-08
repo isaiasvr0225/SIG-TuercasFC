@@ -1,16 +1,118 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
-
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.sig_tuercasfc.controller.HelloController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-    <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
-</VBox>
+<!--
+   Aqui se cumple otro requisito, el de crear las interfaces graficas del proyecto, en este caso se utilizo
+   el lenguaje de marcado fxml. Esta es otra de las 2 interfaces graficas que se crearon para el proyecto.
+ -->
+
+<AnchorPane fx:id="loginPage" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sig_tuercasfc.controller.LoginController">
+   <children>
+      <HBox fillHeight="false" prefHeight="500.0" prefWidth="600.0">
+         <children>
+            <VBox prefHeight="500.0" prefWidth="300.0" style="-fx-background-color: #379237;">
+               <children>
+                  <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" translateX="50.0" translateY="120.0">
+                     <image>
+                        <Image url="@images/ball-logo.png" />
+                     </image>
+                  </ImageView>
+                  <Label prefHeight="37.0" prefWidth="108.0" text="Welcome to" textFill="WHITE" translateX="100.0" translateY="130.0">
+                     <font>
+                        <Font name="Ebrima Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="10.0" layoutY="140.0" prefHeight="37.0" prefWidth="163.0" text="TUERCAS FC" textFill="WHITE" translateX="77.0" translateY="120.0">
+                     <font>
+                        <Font name="Impact" size="32.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox prefHeight="501.0" prefWidth="306.0">
+               <children>
+                  <ImageView fitHeight="16.0" fitWidth="17.0" onMouseClicked="#onCloseButtonLoginClicked" pickOnBounds="true" preserveRatio="true" translateX="280.0" translateY="5.0">
+                     <image>
+                        <Image url="@images/close.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <ImageView fitHeight="36.0" fitWidth="28.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#onMinimizeButtonLoginClicked" pickOnBounds="true" preserveRatio="true" translateX="230.0" translateY="-15.0">
+                     <image>
+                        <Image url="@images/minimize.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <ImageView fitHeight="84.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" translateY="15.0">
+                     <image>
+                        <Image url="@images/ball-logo.png" />
+                     </image>
+                  </ImageView>
+                  <Label prefHeight="40.0" prefWidth="213.0" text="Welcome Back" textFill="#2e2e61" translateX="30.0" translateY="15.0">
+                     <font>
+                        <Font name="Impact" size="32.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="37.0" prefWidth="177.0" text="Sign in to continue" textFill="#aba2a2" translateX="30.0" translateY="10.0">
+                     <font>
+                        <Font name="Ebrima Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="userField" prefHeight="35.0" prefWidth="223.0" promptText="User" translateY="30.0">
+                     <VBox.margin>
+                        <Insets left="30.0" right="50.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
+                  <PasswordField fx:id="passwordField" prefHeight="35.0" prefWidth="223.0" promptText="Password" translateY="50.0">
+                     <VBox.margin>
+                        <Insets left="30.0" right="50.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </PasswordField>
+                  <Button fx:id="logingButton" mnemonicParsing="false" onAction="#onLoginButtonAction" prefHeight="36.0" prefWidth="223.0" style="-fx-background-color: #379237;" text="Login" textFill="WHITE" translateX="30.0" translateY="80.0">
+                     <font>
+                        <Font name="Ebrima" size="18.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </Button>
+                  <Label prefHeight="37.0" prefWidth="177.0" text="Forgot Password?" textFill="#aba2a2" translateX="140.0" translateY="2.0">
+                     <font>
+                        <Font name="Ebrima Bold" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

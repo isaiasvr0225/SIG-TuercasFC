@@ -2,170 +2,701 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="700.0" prefWidth="1024.0" style="-fx-background-color: #0B2447;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sig_tuercasfc.controller.HomeController">
+<!--
+   Aqui se cumple otro requisito, el de crear las interfaces graficas del proyecto, en este caso se utilizo
+   el lenguaje de marcado fxml. Esta es una de las 2 interfaces graficas que se crearon para el proyecto.
+
+   Cave resaltar que la ventaja de usar fxml es que se puede usar CSS para un mejor diseño de la interfaz.
+ -->
+
+<AnchorPane prefHeight="725.0" prefWidth="1366.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sig_tuercasfc.controller.HomeController">
    <children>
-      <Pane layoutX="-4.0" layoutY="-13.0" prefHeight="700.0" prefWidth="1024.0">
+      <Pane layoutX="-4.0" layoutY="-13.0" prefHeight="725.0" prefWidth="1374.0">
          <children>
-            <ImageView fitHeight="38.0" fitWidth="30.0" layoutX="974.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../java/com/sig_tuercasfc/images/close.png" />
-               </image>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </ImageView>
-            <HBox layoutX="4.0" layoutY="15.0" prefHeight="697.0" prefWidth="1022.0">
+            <HBox layoutX="4.0" layoutY="12.0" prefHeight="725.0" prefWidth="1366.0">
                <children>
-                  <Pane prefHeight="697.0" prefWidth="852.0">
+                  <Pane prefHeight="773.0" prefWidth="335.0" style="-fx-background-color: #379237;">
                      <children>
-                        <ImageView fitHeight="88.0" fitWidth="108.0" layoutX="27.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="88.0" fitWidth="108.0" layoutX="96.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="file:/C:/Users/profe/Desktop/Tuercas%20FC/SIG_TuercasFC/src/main/java/com/sig_tuercasfc/images/avatar-user.png" />
+                              <Image url="@images/avatar-user.png" />
                            </image>
                         </ImageView>
-                        <Label layoutX="47.0" layoutY="113.0" prefHeight="32.0" prefWidth="57.0" text="Admin" textFill="WHITE">
+                        <Label layoutX="105.0" layoutY="116.0" prefHeight="32.0" prefWidth="89.0" text="Welcome," textFill="WHITE">
                            <font>
-                              <Font name="Consolas Italic" size="18.0" />
+                              <Font name="Consolas" size="18.0" />
                            </font>
                         </Label>
-                        <Pane layoutX="-8.0" layoutY="623.0" prefHeight="97.0" prefWidth="149.0">
+                        <Pane layoutX="-8.0" layoutY="640.0" prefHeight="79.0" prefWidth="149.0">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
                            <children>
-                              <ImageView fitHeight="49.0" fitWidth="66.0" layoutX="13.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="49.0" fitWidth="66.0" layoutX="13.0" layoutY="13.0" onMouseClicked="#onLogoutButtonClicked" pickOnBounds="true" preserveRatio="true" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);">
                                  <image>
-                                    <Image url="@../../../java/com/sig_tuercasfc/images/logout.png" />
+                                    <Image url="file:/C:/Users/profe/Desktop/Tuercas%20FC/SIG_TuercasFC/src/main/resources/com/sig_tuercasfc/images/logout.png" />
                                  </image>
                               </ImageView>
-                              <Label layoutX="63.0" layoutY="24.0" text="Logout" textFill="WHITE">
+                              <Label layoutX="67.0" layoutY="24.0" text="Logout" textFill="WHITE">
                                  <font>
                                     <Font name="Comic Sans MS" size="18.0" />
                                  </font>
                               </Label>
                            </children>
                         </Pane>
+                        <Label layoutX="111.0" layoutY="136.0" prefHeight="32.0" prefWidth="57.0" text="Admin" textFill="WHITE">
+                           <font>
+                              <Font name="Impact" size="18.0" />
+                           </font>
+                        </Label>
+                        <Pane fx:id="admJugadoresBtn" layoutX="10.0" layoutY="189.0" onMouseClicked="#onAdmButtonClicked" prefHeight="65.0" prefWidth="315.0" styleClass="dasboard-button" stylesheets="@css/styles.css">
+                           <children>
+                              <ImageView fitHeight="49.0" fitWidth="49.0" layoutX="6.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/jugador-de-futbol.png" />
+                                 </image>
+                              </ImageView>
+                              <Label layoutX="64.0" layoutY="12.0" prefHeight="42.0" prefWidth="224.0" text="Administrar Datos Jugadores" textFill="WHITE" wrapText="true">
+                                 <font>
+                                    <Font name="Ebrima Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </Pane>
+                        <Pane fx:id="admCuerpoTecnicoBtn" layoutX="10.0" layoutY="260.0" onMouseClicked="#onAdmButtonClicked" prefHeight="65.0" prefWidth="315.0" styleClass="dasboard-button" stylesheets="@css/styles.css">
+                           <children>
+                              <ImageView fitHeight="43.0" fitWidth="42.0" layoutX="9.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/entrenador.png" />
+                                 </image>
+                              </ImageView>
+                              <Label layoutX="64.0" layoutY="5.0" prefHeight="55.0" prefWidth="240.0" text="Administrar Datos Cuerpo Técnico" textFill="WHITE" wrapText="true">
+                                 <font>
+                                    <Font name="Ebrima Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </Pane>
+                        <Pane fx:id="admFuncionariosBtn" layoutX="10.0" layoutY="331.0" onMouseClicked="#onAdmButtonClicked" prefHeight="65.0" prefWidth="315.0" styleClass="dasboard-button" stylesheets="@css/styles.css">
+                           <children>
+                              <ImageView fitHeight="49.0" fitWidth="49.0" layoutX="6.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/empleados.png" />
+                                 </image>
+                              </ImageView>
+                              <Label layoutX="64.0" layoutY="5.0" prefHeight="49.0" prefWidth="224.0" text="Administrar Datos Funcionarios" textFill="WHITE" wrapText="true">
+                                 <font>
+                                    <Font name="Ebrima Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </Pane>
+                        <Pane layoutX="10.0" layoutY="402.0" prefHeight="65.0" prefWidth="315.0" styleClass="dasboard-button" stylesheets="@css/styles.css">
+                           <children>
+                              <ImageView fitHeight="49.0" fitWidth="49.0" layoutX="6.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/planificacion.png" />
+                                 </image>
+                              </ImageView>
+                              <Label layoutX="64.0" layoutY="-1.0" prefHeight="66.0" prefWidth="240.0" text="Planificación de Entrenamientos y Partidos" textFill="WHITE" wrapText="true">
+                                 <font>
+                                    <Font name="Ebrima Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </Pane>
+                        <Pane layoutX="10.0" layoutY="473.0" prefHeight="65.0" prefWidth="315.0" styleClass="dasboard-button" stylesheets="@css/styles.css">
+                           <children>
+                              <ImageView fitHeight="49.0" fitWidth="49.0" layoutX="6.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/estadisticas.png" />
+                                 </image></ImageView>
+                              <Label layoutX="64.0" layoutY="5.0" prefHeight="49.0" prefWidth="240.0" text="Estadisticas y Resultados" textFill="WHITE" wrapText="true">
+                                 <font>
+                                    <Font name="Ebrima Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </Pane>
+                        <Pane layoutX="10.0" layoutY="544.0" prefHeight="65.0" prefWidth="315.0" styleClass="dasboard-button" stylesheets="@css/styles.css">
+                           <children>
+                              <ImageView fitHeight="49.0" fitWidth="49.0" layoutX="6.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/finanzas.png" />
+                                 </image>
+                              </ImageView>
+                              <Label layoutX="64.0" layoutY="8.0" prefHeight="42.0" prefWidth="214.0" text="Presupuestos y Finanza" textFill="WHITE" wrapText="true">
+                                 <font>
+                                    <Font name="Ebrima Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </Pane>
                      </children>
                   </Pane>
-                  <Pane prefHeight="697.0" prefWidth="1419.0">
+                  <Pane prefHeight="725.0" prefWidth="1033.0">
                      <children>
-                        <Pane layoutX="538.0" layoutY="117.0" prefHeight="200.0" prefWidth="200.0" styleClass="card" stylesheets="@../../../java/com/sig_tuercasfc/css/styles.css">
+                        <AnchorPane fx:id="admJugadoresPage" layoutX="3.0" prefHeight="726.0" prefWidth="1036.0" visible="false">
                            <children>
-                              <ImageView fitHeight="150.0" fitWidth="200.0" layoutY="-5.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../java/com/sig_tuercasfc/images/ball-logo.png" />
-                                 </image>
-                              </ImageView>
-                              <Label alignment="CENTER" contentDisplay="CENTER" layoutY="148.0" prefHeight="50.0" prefWidth="199.0" text="Administrar Funcionarios" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                              <AnchorPane layoutX="-3.0" layoutY="41.0" prefHeight="624.0" prefWidth="378.0">
+                                 <children>
+                                    <VBox layoutX="10.0" layoutY="43.0" prefHeight="660.0" prefWidth="364.0" spacing="7.0" style="-fx-border-radius: 10px; -fx-border-color: gray; -fx-border-width: 2px;" AnchorPane.bottomAnchor="22.0">
+                                       <children>
+                                          <Label text="Cédula" translateY="11.0">
+                                             <font>
+                                                <Font name="Ebrima" size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="cedulaJugadorField" prefHeight="60.0" prefWidth="292.0">
+                                             <VBox.margin>
+                                                <Insets right="50.0" />
+                                             </VBox.margin>
+                                             <font>
+                                                <Font name="Arial" size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <Label text="Nombres" translateY="11.0">
+                                             <font>
+                                                <Font name="Ebrima" size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="nombresJugadorField" prefHeight="60.0" prefWidth="364.0">
+                                             <VBox.margin>
+                                                <Insets right="50.0" />
+                                             </VBox.margin>
+                                             <font>
+                                                <Font name="Arial" size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <Label text="Apellidos" translateY="11.0">
+                                             <font>
+                                                <Font name="Ebrima" size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="apellidosJugadorField" prefHeight="60.0" prefWidth="364.0">
+                                             <VBox.margin>
+                                                <Insets right="50.0" />
+                                             </VBox.margin>
+                                             <font>
+                                                <Font name="Arial" size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <Label text="Teléfono" translateY="11.0">
+                                             <font>
+                                                <Font name="Ebrima" size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="telefonoJugadorField" prefHeight="60.0" prefWidth="364.0">
+                                             <VBox.margin>
+                                                <Insets right="50.0" />
+                                             </VBox.margin>
+                                             <font>
+                                                <Font name="Arial" size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <Label text="Correo" translateY="11.0">
+                                             <font>
+                                                <Font name="Ebrima" size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="correoJugadorField" prefHeight="60.0" prefWidth="364.0">
+                                             <VBox.margin>
+                                                <Insets right="50.0" />
+                                             </VBox.margin>
+                                             <font>
+                                                <Font name="Arial" size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <Label text="Dirección" translateY="11.0">
+                                             <font>
+                                                <Font name="Ebrima" size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="direccionJugadorField" prefHeight="60.0" prefWidth="364.0">
+                                             <VBox.margin>
+                                                <Insets right="50.0" />
+                                             </VBox.margin>
+                                             <font>
+                                                <Font name="Arial" size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <Label text="Sueldo" translateY="11.0">
+                                             <font>
+                                                <Font name="Ebrima" size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="sueldoJugadorField" prefHeight="60.0" prefWidth="364.0">
+                                             <VBox.margin>
+                                                <Insets right="50.0" />
+                                             </VBox.margin>
+                                             <font>
+                                                <Font name="Arial" size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <Pane prefHeight="143.0" prefWidth="342.0">
+                                             <children>
+                                                <Button fx:id="addButtonJugadores" layoutX="4.0" layoutY="33.0" mnemonicParsing="false" onAction="#onAddButtonAction" prefHeight="28.0" prefWidth="100.0" stylesheets="@css/styles.css" text="Add" textFill="#fcfcfc">
+                                                   <font>
+                                                      <Font name="Ebrima Bold" size="14.0" />
+                                                   </font>
+                                                </Button>
+                                                <Button fx:id="updateButtonJugadores" layoutX="118.0" layoutY="33.0" mnemonicParsing="false" onAction="#onUpdateButtonAction" prefHeight="28.0" prefWidth="100.0" stylesheets="@css/styles.css" text="Update" textFill="#fcfcfc">
+                                                   <font>
+                                                      <Font name="Ebrima Bold" size="14.0" />
+                                                   </font>
+                                                </Button>
+                                                <Button fx:id="cleanButtonJugadores" layoutX="118.0" layoutY="90.0" mnemonicParsing="false" onAction="#onCleanButtonAction" prefHeight="28.0" prefWidth="100.0" stylesheets="@css/styles.css" text="Clean" textFill="#fcfcfc">
+                                                   <font>
+                                                      <Font name="Ebrima Bold" size="14.0" />
+                                                   </font>
+                                                </Button>
+                                                <Button fx:id="deleteButtonJugadores" layoutX="240.0" layoutY="33.0" mnemonicParsing="false" onAction="#onDeleteButtonAction" prefHeight="28.0" prefWidth="100.0" style="-fx-background-color: #E21818;" stylesheets="@css/styles.css" text="Delete" textFill="#fcfcfc">
+                                                   <font>
+                                                      <Font name="Ebrima Bold" size="14.0" />
+                                                   </font>
+                                                </Button>
+                                             </children>
+                                             <padding>
+                                                <Insets right="10.0" />
+                                             </padding>
+                                          </Pane>
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="20.0" left="10.0" right="10.0" />
+                                       </padding>
+                                    </VBox>
+                                 </children></AnchorPane>
+                              <AnchorPane layoutX="375.0" layoutY="1.0" prefHeight="724.0" prefWidth="660.0">
+                                 <children>
+                                    <TableView fx:id="tablaJugadores" layoutX="2.0" layoutY="41.0" onMouseClicked="#onJugadorColumnClicked" prefHeight="660.0" prefWidth="648.0" styleClass="filter" stylesheets="@css/styles.css">
+                                      <columns>
+                                        <TableColumn fx:id="cedulaJugadoresColumna" prefWidth="65.0" text="Cédula" />
+                                        <TableColumn fx:id="nombresJugadoresCoolumna" prefWidth="99.0" text="Nombres" />
+                                          <TableColumn fx:id="apellidosJugadoresColumna" prefWidth="79.0" text="Apellidos" />
+                                          <TableColumn fx:id="telefonoJugadoresColumna" prefWidth="78.0" text="Telefono" />
+                                          <TableColumn fx:id="correoJugadoresColumna" prefWidth="120.0" text="Correo" />
+                                          <TableColumn fx:id="direccionJugadoresColumna" prefWidth="127.0" text="Dirección" />
+                                          <TableColumn fx:id="sueldoJugadoresColumna" prefWidth="76.0" text="Sueldo" />
+                                      </columns>
+                                    </TableView>
+                                    <Text layoutX="11.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Datos Personales de los Jugadores" wrappingWidth="445.6666259765625">
+                                       <font>
+                                          <Font name="Verdana" size="24.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="admCuerpoTecnicoPage" layoutX="3.0" prefHeight="726.0" prefWidth="1036.0" visible="false">
+                           <children>
+                              <AnchorPane layoutX="-3.0" layoutY="41.0" prefHeight="624.0" prefWidth="378.0">
+                                 <children>
+                                    <VBox layoutX="10.0" layoutY="43.0" prefHeight="660.0" prefWidth="364.0" spacing="7.0" style="-fx-border-radius: 10px; -fx-border-color: gray; -fx-border-width: 2px;" AnchorPane.bottomAnchor="22.0">
+                                       <children>
+                                          <Label text="Cédula">
+                                             <font>
+                                                <Font name="Ebrima" size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="cedulaCuerpoTecnicoField" prefHeight="60.0" prefWidth="364.0">
+                                             <VBox.margin>
+                                                <Insets right="50.0" />
+                                             </VBox.margin>
+                                             <font>
+                                                <Font name="Arial" size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <Label text="Cargo" translateY="11.0">
+                                             <font>
+                                                <Font name="Ebrima" size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="cargoCuerpoTecnicoField" prefHeight="60.0" prefWidth="364.0">
+                                             <font>
+                                                <Font name="Arial" size="14.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets right="50.0" />
+                                             </VBox.margin>
+                                          </TextField>
+                                          <Label text="Nombres" translateY="11.0">
+                                             <font>
+                                                <Font name="Ebrima" size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="nombresCuerpoTecnicoField" prefHeight="60.0" prefWidth="364.0">
+                                             <VBox.margin>
+                                                <Insets right="50.0" />
+                                             </VBox.margin>
+                                             <font>
+                                                <Font name="Arial" size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <Label text="Apellidos" translateY="11.0">
+                                             <font>
+                                                <Font name="Ebrima" size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="apellidosCuerpoTecnicoField" prefHeight="60.0" prefWidth="364.0">
+                                             <VBox.margin>
+                                                <Insets right="50.0" />
+                                             </VBox.margin>
+                                             <font>
+                                                <Font name="Arial" size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <Label text="Teléfono" translateY="11.0">
+                                             <font>
+                                                <Font name="Ebrima" size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="telefonoCuerpoTecnicoField" prefHeight="60.0" prefWidth="364.0">
+                                             <VBox.margin>
+                                                <Insets right="50.0" />
+                                             </VBox.margin>
+                                             <font>
+                                                <Font name="Arial" size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <Label text="Correo" translateY="11.0">
+                                             <font>
+                                                <Font name="Ebrima" size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="correoCuerpoTecnicoField" prefHeight="60.0" prefWidth="364.0">
+                                             <VBox.margin>
+                                                <Insets right="50.0" />
+                                             </VBox.margin>
+                                             <font>
+                                                <Font name="Arial" size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <Label text="Dirección" translateY="11.0">
+                                             <font>
+                                                <Font name="Ebrima" size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="direccionCuerpoTecnicoField" prefHeight="60.0" prefWidth="364.0">
+                                             <VBox.margin>
+                                                <Insets right="50.0" />
+                                             </VBox.margin>
+                                             <font>
+                                                <Font name="Arial" size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <Label text="Sueldo" translateY="11.0">
+                                             <font>
+                                                <Font name="Ebrima" size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="sueldoCuerpoTecnicoField" prefHeight="60.0" prefWidth="364.0">
+                                             <VBox.margin>
+                                                <Insets right="50.0" />
+                                             </VBox.margin>
+                                             <font>
+                                                <Font name="Arial" size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <Pane prefHeight="143.0" prefWidth="342.0">
+                                             <children>
+                                                <Button fx:id="addButtonCuerpoTecnico" layoutX="4.0" layoutY="33.0" mnemonicParsing="false" onAction="#onAddButtonAction" prefHeight="28.0" prefWidth="100.0" stylesheets="@css/styles.css" text="Add" textFill="#fcfcfc">
+                                                   <font>
+                                                      <Font name="Ebrima Bold" size="14.0" />
+                                                   </font>
+                                                </Button>
+                                                <Button fx:id="updateButtonCuerpoTecnico" layoutX="118.0" layoutY="33.0" mnemonicParsing="false" onAction="#onUpdateButtonAction" prefHeight="28.0" prefWidth="100.0" stylesheets="@css/styles.css" text="Update" textFill="#fcfcfc">
+                                                   <font>
+                                                      <Font name="Ebrima Bold" size="14.0" />
+                                                   </font>
+                                                </Button>
+                                                <Button fx:id="cleanButtonCuerpoTecnico" layoutX="118.0" layoutY="90.0" mnemonicParsing="false" onAction="#onCleanButtonAction" prefHeight="28.0" prefWidth="100.0" stylesheets="@css/styles.css" text="Clean" textFill="#fcfcfc">
+                                                   <font>
+                                                      <Font name="Ebrima Bold" size="14.0" />
+                                                   </font>
+                                                </Button>
+                                                <Button fx:id="deleteButtonCuerpoTecnico" layoutX="240.0" layoutY="33.0" mnemonicParsing="false" onAction="#onDeleteButtonAction" prefHeight="28.0" prefWidth="100.0" style="-fx-background-color: #E21818;" stylesheets="@css/styles.css" text="Delete" textFill="#fcfcfc">
+                                                   <font>
+                                                      <Font name="Ebrima Bold" size="14.0" />
+                                                   </font>
+                                                </Button>
+                                             </children>
+                                             <padding>
+                                                <Insets right="10.0" />
+                                             </padding>
+                                          </Pane>
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="20.0" left="10.0" right="10.0" />
+                                       </padding>
+                                    </VBox>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="375.0" layoutY="1.0" prefHeight="724.0" prefWidth="660.0">
+                                 <children>
+                                    <TableView fx:id="tablaCuerpoTecnico" layoutX="2.0" layoutY="41.0" onMouseClicked="#onCuerpoTecnicoColumClicked" prefHeight="660.0" prefWidth="648.0" styleClass="filter" stylesheets="@css/styles.css">
+                                       <columns>
+                                          <TableColumn fx:id="cedulaCuerpoTecnicoColumna" prefWidth="75.0" text="Cédula" />
+                                          <TableColumn fx:id="cargoCuerpoTecnicoColumna" prefWidth="75.0" text="Cargo" />
+                                          <TableColumn fx:id="nombresCuerpoTecnicoColumna" prefWidth="75.0" text="Nombres" />
+                                          <TableColumn fx:id="apellidosCuerpoTecnicoColumna" prefWidth="75.0" text="Apellidos" />
+                                          <TableColumn fx:id="telefonoCuerpoTecnicoColumna" prefWidth="65.0" text="Telefono" />
+                                          <TableColumn fx:id="correoCuerpoTecnicoColumna" prefWidth="117.0" text="Correo" />
+                                          <TableColumn fx:id="direccionCuerpoTecnicoColumna" prefWidth="76.0" text="Dirección" />
+                                          <TableColumn fx:id="sueldoCuerpoTecnicoColumna" prefWidth="88.0" text="Sueldo" />
+                                       </columns>
+                                    </TableView>
+                                    <Text layoutX="11.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Datos Personales del Cuerpo Técnico" wrappingWidth="445.6666259765625">
+                                       <font>
+                                          <Font name="Verdana" size="24.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="admFuncionariosPage" layoutX="3.0" prefHeight="726.0" prefWidth="1036.0" visible="false">
+                           <children>
+                              <AnchorPane layoutX="-3.0" layoutY="41.0" prefHeight="624.0" prefWidth="378.0">
+                                 <children>
+                                    <VBox layoutX="10.0" layoutY="43.0" prefHeight="660.0" prefWidth="364.0" spacing="7.0" style="-fx-border-radius: 10px; -fx-border-color: gray; -fx-border-width: 2px;" AnchorPane.bottomAnchor="22.0">
+                                       <children>
+                                          <Label text="Cédula" translateY="11.0">
+                                             <font>
+                                                <Font name="Ebrima" size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="cedulaFuncionarioField" prefHeight="60.0" prefWidth="292.0">
+                                             <VBox.margin>
+                                                <Insets right="50.0" />
+                                             </VBox.margin>
+                                             <font>
+                                                <Font name="Arial" size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <Label text="Cargo" translateY="11.0">
+                                             <font>
+                                                <Font name="Ebrima" size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="cargoFuncionarioField" prefHeight="60.0" prefWidth="364.0">
+                                             <VBox.margin>
+                                                <Insets right="50.0" />
+                                             </VBox.margin>
+                                             <font>
+                                                <Font name="Arial" size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <Label text="Nombres" translateY="11.0">
+                                             <font>
+                                                <Font name="Ebrima" size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="nombresFuncionarioField" prefHeight="60.0" prefWidth="364.0">
+                                             <VBox.margin>
+                                                <Insets right="50.0" />
+                                             </VBox.margin>
+                                             <font>
+                                                <Font name="Arial" size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <Label text="Apellidos" translateY="11.0">
+                                             <font>
+                                                <Font name="Ebrima" size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="apellidosFuncionarioField" prefHeight="60.0" prefWidth="364.0">
+                                             <VBox.margin>
+                                                <Insets right="50.0" />
+                                             </VBox.margin>
+                                             <font>
+                                                <Font name="Arial" size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <Label text="Teléfono" translateY="11.0">
+                                             <font>
+                                                <Font name="Ebrima" size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="telefonoFuncionarioField" prefHeight="60.0" prefWidth="364.0">
+                                             <VBox.margin>
+                                                <Insets right="50.0" />
+                                             </VBox.margin>
+                                             <font>
+                                                <Font name="Arial" size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <Label text="Correo" translateY="11.0">
+                                             <font>
+                                                <Font name="Ebrima" size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="correoFuncionarioField" prefHeight="60.0" prefWidth="364.0">
+                                             <VBox.margin>
+                                                <Insets right="50.0" />
+                                             </VBox.margin>
+                                             <font>
+                                                <Font name="Arial" size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <Label text="Dirección" translateY="11.0">
+                                             <font>
+                                                <Font name="Ebrima" size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="direccionFuncionarioField" prefHeight="60.0" prefWidth="364.0">
+                                             <VBox.margin>
+                                                <Insets right="50.0" />
+                                             </VBox.margin>
+                                             <font>
+                                                <Font name="Arial" size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <Label text="Sueldo" translateY="11.0">
+                                             <font>
+                                                <Font name="Ebrima" size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="sueldoFuncionarioField" prefHeight="60.0" prefWidth="364.0">
+                                             <VBox.margin>
+                                                <Insets right="50.0" />
+                                             </VBox.margin>
+                                             <font>
+                                                <Font name="Arial" size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <Pane prefHeight="143.0" prefWidth="342.0">
+                                             <children>
+                                                <Button fx:id="addButtonFuncionarios" layoutX="4.0" layoutY="33.0" mnemonicParsing="false" onAction="#onAddButtonAction" prefHeight="28.0" prefWidth="100.0" stylesheets="@css/styles.css" text="Add" textFill="#fcfcfc">
+                                                   <font>
+                                                      <Font name="Ebrima Bold" size="14.0" />
+                                                   </font>
+                                                </Button>
+                                                <Button fx:id="updateButtonFuncionarios" layoutX="118.0" layoutY="33.0" mnemonicParsing="false" onAction="#onUpdateButtonAction" prefHeight="28.0" prefWidth="100.0" stylesheets="@css/styles.css" text="Update" textFill="#fcfcfc">
+                                                   <font>
+                                                      <Font name="Ebrima Bold" size="14.0" />
+                                                   </font>
+                                                </Button>
+                                                <Button fx:id="cleanButtonFuncionarios" layoutX="118.0" layoutY="90.0" mnemonicParsing="false" onAction="#onCleanButtonAction" prefHeight="28.0" prefWidth="100.0" stylesheets="@css/styles.css" text="Clean" textFill="#fcfcfc">
+                                                   <font>
+                                                      <Font name="Ebrima Bold" size="14.0" />
+                                                   </font>
+                                                </Button>
+                                                <Button fx:id="deleteButtonFuncionarios" layoutX="240.0" layoutY="33.0" mnemonicParsing="false" onAction="#onDeleteButtonAction" prefHeight="28.0" prefWidth="100.0" style="-fx-background-color: #E21818;" stylesheets="@css/styles.css" text="Delete" textFill="#fcfcfc">
+                                                   <font>
+                                                      <Font name="Ebrima Bold" size="14.0" />
+                                                   </font>
+                                                </Button>
+                                             </children>
+                                             <padding>
+                                                <Insets right="10.0" />
+                                             </padding>
+                                          </Pane>
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="20.0" left="10.0" right="10.0" />
+                                       </padding>
+                                    </VBox>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="375.0" layoutY="1.0" prefHeight="724.0" prefWidth="660.0">
+                                 <children>
+                                    <TableView fx:id="tablaFuncionarios" layoutX="2.0" layoutY="41.0" onMouseClicked="#onFuncionariosColumnClicked" prefHeight="660.0" prefWidth="648.0" styleClass="filter" stylesheets="@css/styles.css">
+                                       <columns>
+                                          <TableColumn fx:id="cedulaFuncionarioColumna" prefWidth="75.0" text="Cédula" />
+                                          <TableColumn fx:id="cargoFuncionarioColumna" prefWidth="75.0" text="Cargo" />
+                                          <TableColumn fx:id="nombresFuncionarioColumna" prefWidth="75.0" text="Nombres" />
+                                          <TableColumn fx:id="apellidosFuncionarioColumna" prefWidth="89.0" text="Apellidos" />
+                                          <TableColumn fx:id="telefonoFuncionarioColumna" prefWidth="70.0" text="Teléfono" />
+                                          <TableColumn fx:id="correoFuncionarioColumna" prefWidth="102.0" text="Correo" />
+                                          <TableColumn fx:id="direccionFuncionarioColumna" prefWidth="86.0" text="Dirrección" />
+                                          <TableColumn fx:id="sueldoFuncionarioColumna" prefWidth="74.0" text="Sueldo" />
+                                       </columns>
+                                    </TableView>
+                                    <Text layoutX="11.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Datos Personales de los Funcionarios" wrappingWidth="453.6666259765625">
+                                       <font>
+                                          <Font name="Verdana" size="24.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                        <Pane fx:id="helloPage" layoutX="31.0" layoutY="27.0" prefHeight="666.0" prefWidth="951.0" style="-fx-border-radius: 8px; -fx-border-color: gray; -fx-background-color: linear-gradient(to bottom right,  #3CCF4E,  #FED049);">
+                           <children>
+                              <Label layoutX="240.0" layoutY="238.0" prefHeight="127.0" prefWidth="510.0" text="Welcome to the Management Information System of " textFill="#1c1d1e" wrapText="true">
                                  <font>
-                                    <Font name="Ebrima Bold" size="18.0" />
+                                    <Font name="HoloLens MDL2 Assets" size="36.0" />
                                  </font>
                               </Label>
-                           </children>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Pane>
-                        <Pane layoutX="285.0" layoutY="420.0" prefHeight="200.0" prefWidth="200.0" styleClass="card" stylesheets="@../../../java/com/sig_tuercasfc/css/styles.css">
-                           <children>
-                              <ImageView fitHeight="150.0" fitWidth="200.0" layoutY="-5.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../java/com/sig_tuercasfc/images/ball-logo.png" />
-                                 </image>
-                              </ImageView>
-                              <Label alignment="CENTER" contentDisplay="CENTER" layoutX="-1.0" layoutY="117.0" prefHeight="91.0" prefWidth="199.0" text="Planificación de Entrenamientos y Partidos" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                              <Label layoutX="607.0" layoutY="274.0" prefHeight="83.0" prefWidth="236.0" text="Tuercas FC" textFill="#5b5a1f" wrapText="true">
                                  <font>
-                                    <Font size="18.0" />
+                                    <Font name="Ink Free" size="48.0" />
                                  </font>
                               </Label>
-                           </children>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Pane>
-                        <Pane layoutX="24.0" layoutY="420.0" prefHeight="200.0" prefWidth="200.0" styleClass="card" stylesheets="@../../../java/com/sig_tuercasfc/css/styles.css">
-                           <children>
-                              <ImageView fitHeight="150.0" fitWidth="200.0" layoutY="-5.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../java/com/sig_tuercasfc/images/ball-logo.png" />
-                                 </image>
-                              </ImageView>
-                              <Label alignment="CENTER" contentDisplay="CENTER" layoutY="148.0" prefHeight="50.0" prefWidth="199.0" text="Estadisticas y Resultados" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                              <Label layoutX="229.0" layoutY="135.0" prefHeight="127.0" prefWidth="161.0" text="¡HELLO!" textFill="#191a1b" wrapText="true">
                                  <font>
-                                    <Font name="Ebrima Bold" size="18.0" />
+                                    <Font name="Segoe UI Bold" size="36.0" />
                                  </font>
                               </Label>
-                           </children>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Pane>
-                        <Pane layoutX="24.0" layoutY="117.0" prefHeight="200.0" prefWidth="200.0" styleClass="card" stylesheets="@../../../java/com/sig_tuercasfc/css/styles.css">
-                           <children>
-                              <ImageView fitHeight="150.0" fitWidth="200.0" layoutY="-5.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="108.0" fitWidth="152.0" layoutX="348.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../../../../../Pictures/UDC-removebg-preview.png" />
+                                    <Image url="@images/ball-logo.png" />
                                  </image>
                               </ImageView>
-                              <Label alignment="CENTER" contentDisplay="CENTER" layoutY="148.0" prefHeight="32.0" prefWidth="199.0" text="Administrar Jugadores" textAlignment="CENTER" textFill="WHITE">
-                                 <font>
-                                    <Font name="Ebrima Bold" size="18.0" />
-                                 </font>
-                              </Label>
                            </children>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
                         </Pane>
-                        <Pane layoutX="285.0" layoutY="117.0" prefHeight="200.0" prefWidth="200.0" styleClass="card" stylesheets="@../../../java/com/sig_tuercasfc/css/styles.css">
-                           <children>
-                              <ImageView fitHeight="150.0" fitWidth="200.0" layoutY="-5.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../java/com/sig_tuercasfc/images/ball-logo.png" />
-                                 </image>
-                              </ImageView>
-                              <Label alignment="CENTER" contentDisplay="CENTER" layoutX="2.0" layoutY="141.0" prefHeight="66.0" prefWidth="200.0" text="Administrar Cuerpo Tecnico" textAlignment="CENTER" textFill="WHITE" wrapText="true">
-                                 <font>
-                                    <Font name="Ebrima Bold" size="18.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Pane>
-                        <Pane layoutX="538.0" layoutY="420.0" prefHeight="200.0" prefWidth="207.0" styleClass="card" stylesheets="@../../../java/com/sig_tuercasfc/css/styles.css">
-                           <children>
-                              <ImageView fitHeight="150.0" fitWidth="200.0" layoutY="-5.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../java/com/sig_tuercasfc/images/ball-logo.png" />
-                                 </image>
-                              </ImageView>
-                              <Label alignment="CENTER" contentDisplay="CENTER" layoutY="148.0" prefHeight="32.0" prefWidth="199.0" text="Presupuestos y Finanzas" textAlignment="CENTER" textFill="WHITE">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                           <padding>
-                              <Insets right="5.0" />
-                           </padding>
-                        </Pane>
-                     </children>
-                  </Pane>
+                     </children></Pane>
                </children>
             </HBox>
+            <ImageView fitHeight="49.0" fitWidth="20.0" layoutX="1325.0" layoutY="15.0" onMouseClicked="#onMinimizeButtonHomeClicked" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/minimize.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView fitHeight="13.0" fitWidth="20.0" layoutX="1355.0" layoutY="18.0" onMouseClicked="#onCloseButtonHomeClicked" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="file:/C:/Users/profe/Desktop/Tuercas%20FC/SIG_TuercasFC/src/main/resources/com/sig_tuercasfc/images/close.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
          </children>
       </Pane>
    </children>
